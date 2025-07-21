@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Budget Tracker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>💸 Budget Tracker</h1>
+
+    <div class="summary">
+      <div class="card income-card">
+        <p>Income</p>
+        <h3>${{ income }}</h3>
+      </div>
+      <div class="card expense-card">
+        <p>Expense</p>
+        <h3>${{ expense }}</h3>
+      </div>
+      <div class="card balance-card">
+        <p>Balance</p>
+        <h3>${{ balance }}</h3>
+      </div>
+    </div>
+
+    <form method="POST" class="transaction-form">
+      <input type="text" name="description" placeholder="Description" required />
+      <input type="number" name="amount" step="0.01" placeholder="Amount" required />
+      <select name="type">
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+      </select>
+      <button type="submit">Add</button>
+    </form>
+
+    <div class="transaction-list">
+      {% for t in transactions %}
+      <div class="item {{ t.type }}">
+        <div class="item-left">
+          {% if t.type == 'income' %}
+          <span class="icon">⬆️</span>
+          {% else %}
+          <span class="icon">⬇️</span>
+          {% endif %}
+          <strong>{{ t.description }}</strong>: ${{ t.amount }}
+        </div>
+        <form method="POST" action="{{ url_for('delete', trans_id=t.id) }}">
+          <button class="delete-btn" onclick="return confirm('Delete this entry?')">🗑</button>
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

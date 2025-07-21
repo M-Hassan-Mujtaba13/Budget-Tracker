@@ -1,0 +1,126 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #dfe9f3, #ffffff);
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  background: #fff;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  animation: fadeIn 0.5s ease-in;
+}
+
+h1 {
+  text-align: center;
+  color: #5a2d82;
+  margin-bottom: 30px;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  background: #f4f0fa;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s;
+  text-align: center;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.income-card { border-left: 5px solid green; }
+.expense-card { border-left: 5px solid red; }
+.balance-card { border-left: 5px solid #5a2d82; }
+
+.transaction-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.transaction-form input,
+.transaction-form select {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  flex: 1 1 30%;
+}
+
+.transaction-form button {
+  background: #5a2d82;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.transaction-form button:hover {
+  background: #431e63;
+}
+
+.transaction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.item {
+  background: #fdfbff;
+  border-left: 6px solid #aaa;
+  padding: 15px 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: slideIn 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+}
+.item.income { border-left-color: green; }
+.item.expense { border-left-color: red; }
+
+.icon {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.item-left {
+  display: flex;
+  align-items: center;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: crimson;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.delete-btn:hover {
+  transform: scale(1.3);
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes slideIn {
+  from {transform: translateY(10px); opacity: 0;}
+  to {transform: translateY(0); opacity: 1;}
+}
